@@ -11,27 +11,25 @@ const links = [
     path: "/",
   },
   {
-    name: "services",
+    name: "servicios",
     path: "/services",
   },
   {
-    name: "resume",
+    name: "resumen",
     path: "/resume",
   },
   {
-    name: "work",
+    name: "mis proyectos",
     path: "/work",
   },
   {
-    name: "contact",
+    name: "contacto",
     path: "/contact",
   },
 ];
 
 const MobileNav = () => {
   const pathname = usePathname();
-  const nacho = "<nacho";
-  const cierre = "/>";
 
   return (
     <Sheet>
@@ -42,9 +40,8 @@ const MobileNav = () => {
         <div className="mt-32 mb-40 text-center text-2xl">
           <Link href="/">
             <h1 className="text-4xl font-semibold">
-              {nacho}
+              nacho
               <span className="text-accent">Dev</span>
-              {cierre}
             </h1>
           </Link>
         </div>
