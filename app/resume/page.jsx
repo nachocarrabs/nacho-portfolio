@@ -8,16 +8,16 @@ import {
   FaReact,
   FaFigma,
   FaNodeJs,
-  FaJava,
-  FaS,
+  FaJava
+} from "react-icons/fa";
+import {
+  SiTailwindcss,
+  SiNextdotjs,
   SiSpringboot,
   SiAdobephotoshop,
   SiAdobeillustrator,
-  SiNextdotjs,
-  SiTailwindcss,
   SiSass,
-} from "react-icons/fa";
-import { SiTailwindcss, SiNextdotjs } from "react-icons/si";
+} from "react-icons/si";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Tooltip,
@@ -140,7 +140,32 @@ const skills = {
 };
 
 const Resume = () => {
-  return <div className="container mx-auto">Resume</div>;
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { delay: 2.4, ease: "easeIn" } }}
+      className="min-h-[80vh] flex items-center justify-center py-12 xl:py-0"
+    >
+      <div className="container mx-auto">
+        <Tabs
+          defaultValue="experience"
+          className="flex flex-col xl:flex-row gap-[60px]"
+        >
+          <TabsList className="flex flex-col w-full max-w-[380px] mx-auto xl:mx-0 gap-6">
+            <TabsTrigger value="educación">Education</TabsTrigger>
+            <TabsTrigger value="habilidades">Mis habilidades</TabsTrigger>
+            <TabsTrigger value="sobremi">Sobre mi</TabsTrigger>
+          </TabsList>
+
+        <div className="min-h-[70vh] w-full">
+          <TabsContent value="educación" className="w-full">
+            educación
+          </TabsContent>
+        </div>
+        </Tabs>
+      </div>
+    </motion.div>
+  );
 };
 
 export default Resume;
