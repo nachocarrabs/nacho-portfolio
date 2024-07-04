@@ -17,6 +17,9 @@ import {
   SiAdobephotoshop,
   SiAdobeillustrator,
   SiSass,
+  SiMongodb,
+  SiMysql,
+  SiExpress 
 } from "react-icons/si";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
@@ -32,33 +35,33 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 
 const about = {
-  title: "About me",
+  title: "Sobre mi",
   desc: "Hola soy nacho como andan todoa sdjasjj j sajd jas jasdj jdsjdjsj",
   info: [
     {
-      fieldName: "Name",
+      fieldName: "Nombre:",
       fieldValue: "Ignacio Carrabs",
     },
     {
-      fieldName: "Celular",
+      fieldName: "Celular:",
       fieldValue: "(+54) 342 5115 188",
     },
     {
-      fieldName: "Discord",
+      fieldName: "Discord:",
       fieldValue: "nacho.car",
     },
     {
-      fieldName: "Nacionalidad",
+      fieldName: "Nacionalidad:",
       fieldValue: "Argentina",
     },
 
     {
-      fieldName: "E-mail",
+      fieldName: "Email:",
       fieldValue: "ignaciocarrabs@gmail.com",
     },
     {
-      fieldName: "Idiomas",
-      fieldValue: "Español (nativo), Inglés (Intermedio)",
+      fieldName: "Idiomas:",
+      fieldValue: "Español, Inglés",
     },
   ],
 };
@@ -89,19 +92,15 @@ const skills = {
   skillList: [
     {
       icon: <FaHtml5 />,
-      name: "HTML",
+      name: "HTML 5",
     },
     {
       icon: <FaCss3 />,
-      name: "CSS",
+      name: "CSS 3",
     },
     {
       icon: <FaJs />,
       name: "JavaScript",
-    },
-    {
-      icon: <FaJava />,
-      name: "Java",
     },
     {
       icon: <FaReact />,
@@ -112,6 +111,14 @@ const skills = {
       name: "Node.js",
     },
     {
+      icon: <SiExpress />,
+      name: "Express.js"
+    },
+    {
+      icon: <FaJava />,
+      name: "Java",
+    },
+    {
       icon: <SiSpringboot />,
       name: "SpringBoot",
     },
@@ -120,12 +127,8 @@ const skills = {
       name: "Tailwind CSS",
     },
     {
-      icon: <SiSass />,
-      name: "Sass CSS",
-    },
-    {
       icon: <FaFigma />,
-      name: "figma",
+      name: "Figma",
     },
     {
       icon: <SiAdobephotoshop />,
@@ -138,6 +141,18 @@ const skills = {
     {
       icon: <SiNextdotjs />,
       name: "Next.js",
+    },
+    {
+      icon: <SiSass/>,
+      name: "Sass CSS"
+    },
+    {
+      icon: <SiMongodb />,
+      name: "MongoDB"
+    },
+    {
+      icon: <SiMysql />,
+      name: "MySQL"
     },
   ],
 };
@@ -207,11 +222,43 @@ const Resume = () => {
                 </ScrollArea>
               </div>
             </TabsContent>
-            <TabsContent value="habilidades" className="w-full">
-              mis habilidades
+            <TabsContent value="habilidades" className="w-full h-full">
+              <div className="flex flex-col gap-[30px]">
+                <div className="flex flex-col gap-[30px] text-center xl:text-left">
+                  <h3 className="text-4xl font-bold ">{skills.title}</h3>
+                  <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">{skills.description}</p>
+                </div>
+                <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:gap-[30px] gap-4">
+                  {skills.skillList.map((skill, index) =>{
+                    return <li key={index}>
+                      <TooltipProvider delayDuration={100}>
+                        <Tooltip>
+                          <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group">
+                          <div className="text-6xl hover:text-accent transition-all duration-300">{skill.icon}</div>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p className="capitalize">{skill.name}</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
+                    </li>
+                  })}
+                </ul>
+              </div>
             </TabsContent>
-            <TabsContent value="sobremi" className="w-full">
-              sobre mi
+            <TabsContent value="sobremi" className="w-full text-center xl:text-left">
+              <div className="flex flex-col gap-[30px]">
+                <h3 className="text-4xl font-bold">{about.title}</h3>
+                <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">{about.desc}</p>
+                <u className="grid grid-cols-1 xl:grid-cols-2 gap-y-6 max-w-[620px] mx-auto xl:mx-0 ">
+                 {about.info.map((item, index) => {
+                  return <li key={index} className="flex items-center justify-center xl:justify-start gap-4">
+                    <span className="text-white/60">{item.fieldName}</span>
+                    <span className="text-base">{item.fieldValue}</span>
+                  </li>
+                 })}
+                </u>
+              </div>
             </TabsContent>
           </div>
         </Tabs>
